@@ -39,16 +39,16 @@ class FileSize():
                     return 0
 
     # 返回字节为单位的值
-    @property
-    def size(self):
-        return self.size
-
-    @size.setter
-    def size(self, newsize):
-        try:
-            self.size = long(newsize)
-        except:
-            self.size = 0
+    # @property
+    # def size(self):
+    #     return self.size
+    #
+    # @size.setter
+    # def size(self, newsize):
+    #     try:
+    #         self.size = long(newsize)
+    #     except:
+    #         self.size = 0
 
     # 返回带单位的自动值
     @property

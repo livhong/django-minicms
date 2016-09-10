@@ -124,7 +124,7 @@ def get_files(root_path, cur_path, allow_types=[]):
             is_allow_list = (len(allow_types) == 0) or (ext in allow_types)
             if is_allow_list:
                 files.append({
-                    "url": urllib.basejoin(USettings.gSettings.MEDIA_URL, os.path.join(os.path.relpath(cur_path, root_path), item).replace("\\", "/")),
+                    "url": urllib.parse.urljoin(USettings.gSettings.MEDIA_URL, os.path.join(os.path.relpath(cur_path, root_path), item).replace("\\", "/")),
                     "mtime": os.path.getmtime(item_fullname)
                 })
 
@@ -228,7 +228,7 @@ def UploadFile(request):
     # 返回数据
     return_info = {
         # 保存后的文件名称
-        'url': urllib.basejoin(USettings.gSettings.MEDIA_URL, OutputPathFormat),
+        'url': urllib.parse.urljoin(USettings.gSettings.MEDIA_URL, OutputPathFormat),
         'original': upload_file_name,  # 原始文件名
         'type': upload_original_ext,
         'state': state,  # 上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
@@ -288,7 +288,7 @@ def catcher_remote_image(request):
 
             catcher_infos.append({
                 "state": state,
-                "url": urllib.basejoin(USettings.gSettings.MEDIA_URL, o_path_format),
+                "url": urllib.parse.urljoin(USettings.gSettings.MEDIA_URL, o_path_format),
                 "size": os.path.getsize(o_filename),
                 "title": os.path.basename(o_file),
                 "original": remote_file_name,
